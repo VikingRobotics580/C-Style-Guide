@@ -23,6 +23,7 @@ Examples:
 CANTalon* frontLeft;
 // Okay
 float x;
+Robert roberts;
 // Bad
 Solenoid* gabe;
 ADXRS453Z* ggnore;
