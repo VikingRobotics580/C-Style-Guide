@@ -187,4 +187,61 @@ How to decide:
 
 Important Note: Even if you declare a function inline, sometimes the compiler will decide to not inline the function if it decides that a significant performance drop will occur.
 
+###Order of Includes
 
+When including a file, always refer to it from the project's base directory, avoiding Unix shortcuts like `.` and `..` whenever possible.
+
+For example, including `RobotCode2016/src/foo/myAwesomeCode.h` should be done as:
+
+```c++
+#include "src/foo/myAwesomeCode.h"
+```
+
+Files should always be included in the following order:
+1. The current file's associated header file (if one exists)
+2. Any C system files
+3. Any C++ system files
+4. Any other libraries you may be using
+5. Your project's header files
+
+For example, let's assum we have the following directory structure:
+
+ - src/
+  - main.cpp
+  - foo/
+   - B.h
+   - B.cpp
+  - bar/
+   - A.h
+   - A.cpp
+
+If we want `B.cpp` to include `A.h`, the top of it's code should look like the following:
+
+```c++
+// The associated header file.
+#include "foo/B.h"
+
+// C system file
+#include <sys/types.h>
+
+// C++ system file
+#include <vector>
+
+// Another library that we are using
+#include "WPILib.h"
+
+// Another file in our project.
+#include "bar/A.h"
+```
+
+An exception to this ordering rule is if system-specific code needs conditional includes. This conditional include should be placed after the rest of the includes (if you need multiple conditional includes, then place them in the order mentioned above).
+
+```c++
+#include "foo/B.h"
+
+#include "bar/A.h"
+
+#ifdef LANG_CXX11
+#include <initializer_list>
+#endif
+```
