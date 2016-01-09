@@ -91,3 +91,32 @@ class AutonomousDrive{ … }
 start with the word 'get' or 'set' depending on what it is going to do and the member name in question
     * Examples: `void setSolenoidValue(bool value) { ... }`
     * `bool getSolenoidValue() { ... }`
+
+##Header Files
+
+### General
+
+Every source file should have an associated header file. There are exceptions to this, such as in files containing just a main() function.
+
+###Self-contained Headers
+
+All header files should be self-contained. This means that header files should not perform any excecution or defining of their own. They should only perform declarations and should be wrapped in include guards.
+
+Exceptions to this include template and inline functions, where the definition must not be seperated from its declaration.
+
+###Include Guards
+
+All header files should have an include guard to prevent multiple inclusion. The format should be *\_\<PATH\>\_\<TO\>\_\<FILE\>\_H\_* in all caps.
+
+They must be like this to ensure the uniqueness of the include guards.
+
+For example, if you have a file _src/auto/AutonomousDrive.h_, then your include guard should be as follows:
+
+```c
+#ifndef _SRC_AUTO_AUTONOMOUSDRIVE_H_
+#define _SRC_AUTO_AUTONOMOUSDRIVE_H_
+
+// Your code here
+
+#endif
+```
