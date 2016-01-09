@@ -149,4 +149,9 @@ This is a good use of forward declarations because it just uses them to show tha
 
 However, if you are going to do anything more than reference the class, then you should simple `#include` the file.
 
-If you can't tell whether you need to use a forward declaration or a `#include`, use a `#include`.
+How to decide:
+ * Don't use forward declarations on types from another project (WPILib, STL, Boost, etc...)
+ * When doing anything more than refering to a type, always `#include` the header file.
+ * When using a class template, `#include` its header file.
+
+Remember, if you can't tell whether you need to use a forward declaration or a `#include`, use a `#include`.
