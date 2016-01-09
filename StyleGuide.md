@@ -112,7 +112,7 @@ They must be like this to ensure the uniqueness of the include guards.
 
 For example, if you have a file _src/auto/AutonomousDrive.h_, then your include guard should be as follows:
 
-```c
+```c++
 #ifndef _SRC_AUTO_AUTONOMOUSDRIVE_H_
 #define _SRC_AUTO_AUTONOMOUSDRIVE_H_
 
@@ -120,3 +120,33 @@ For example, if you have a file _src/auto/AutonomousDrive.h_, then your include 
 
 #endif
 ```
+
+###Forward Declarations
+
+A forward declaration is the declaration of a class, function, or template without an associated definition
+
+Avoid forward declarations using unless you are only refering to the object in question, or if you need to make sure something exists before it is included for some reason.
+
+The reasons for this are that forward declarations, while it can both speed up compile time by reducing the files read and recompiled, have some problems associated with them.
+
+For example, in this situation, a forward declaration is good:
+
+```c++
+// B.h
+#ifndef _SRC_FOO_H_
+#define _SRC_FOO_H_
+
+class A;
+
+class B{
+ public:
+  A some_method();
+};
+#endif
+```
+
+This is a good use of forward declarations because it just uses them to show that `B::some_method` is going to return an A object, thus there is not reason to `#include "A.h"` in this file.
+
+However, if you are going to do anything more than reference the class, then you should simple `#include` the file.
+
+If you can't tell whether you need to use a forward declaration or a `#include`, use a `#include`.
