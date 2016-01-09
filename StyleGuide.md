@@ -198,13 +198,14 @@ For example, including `RobotCode2016/src/foo/myAwesomeCode.h` should be done as
 ```
 
 Files should always be included in the following order:
+
 1. The current file's associated header file (if one exists)
 2. Any C system files
 3. Any C++ system files
 4. Any other libraries you may be using
 5. Your project's header files
 
-For example, let's assum we have the following directory structure:
+For example, let's assume we have the following directory structure:
 
  - src/
   - main.cpp
