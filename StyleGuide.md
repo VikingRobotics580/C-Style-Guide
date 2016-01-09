@@ -155,3 +155,36 @@ How to decide:
  * When using a class template, `#include` its header file.
 
 Remember, if you can't tell whether you need to use a forward declaration or a `#include`, use a `#include`.
+
+###Inline Functions
+
+An inline function is a way of telling the compiler to expand functions inline rather than calling them through the usual mechanism.
+
+Declare a function as inline only when it is very short (5 lines or less).
+
+Example:
+
+```c++
+class A{
+ public:
+   inline bool getValue(){
+      return m_value;
+   };
+   inline void setValue(bool val){
+      m_value = val;
+   };
+ private:
+   bool m_value;
+};
+```
+
+Inlining a function could make much more efficient code, due to the fact that they place the body directly where they are called, rather than jumping to where the function is defined. However, if inlining is overused, the code could become less efficient because if a very large function is inlined, then the final program's size could increase dramatically, making execution much more difficult for the processor.
+
+How to decide:
+ * Inline a function if it is 5 lines of code or less
+ * Do not inline destructors (destructors usually call other destructors, which can start to mount up after a while)
+ * Avoid inlining a function if it has loops or swich statements unless you are sure that it will increase performance
+
+Important Note: Even if you declare a function inline, sometimes the compiler will decide to not inline the function if it decides that a significant performance drop will occur.
+
+
