@@ -246,3 +246,26 @@ An exception to this ordering rule is if system-specific code needs conditional 
 #include <initializer_list>
 #endif
 ```
+
+##Scoping
+
+###Namespaces
+
+Unless you are defining a class, place everything into a namespace. Namespaces should all have a unique name based on the data they encapsulate. Do not _ever_ use the `using` directive. Do not ever declare a namespace as `inline`. 
+
+A namespace is a way to divide the global scope up into seperate named scopes. This helps prevent name collisions.
+
+For example, if two files have a class named `A`, the two symbols may collide at either compile-time or run-time. If both files have their class in a namespace, `file1::A` and `file2::A`, both classes are distinct symbols and can both be used in the same file without worry about collisions.
+
+Inlining a namespace will automatically place their names in the enclosing scope. For example:
+```c++
+namespace X {
+ inline namespace Y {
+  void foo();
+ }
+}
+```
+
+Now `X::Y::foo()` and `X::foo()` are equivalent. Inlining namespaces are primarily used for [ABI](https://en.wikipedia.org/wiki/Application_binary_interface) compatibility.
+
+Try not to nest namespaces too deeply, as this could cause the code to become cluttered and confusing.
