@@ -272,8 +272,83 @@ Try not to nest namespaces too deeply, as this could cause the code to become cl
 
 We do not use the `using` directive because it completely defeats the purpose of having a namespace in the first place.
 
-###Variables
+###Non-member, Static, and Global Functions & Variables
 
 Always prefer to wrap non-member or non-local variables into a namespace rather than making them global. Always prefer to wrap non-member functions in a namespace rather than making them global or making them static members of a class.
 
-###Variables
+##Classes
+
+###Constructors
+
+Do not do any work in constructors beyond basic initialization. If additional initialization needs to be done (as in, calling a method or function), then that should be placed in a specialized Init method.
+
+Bad:
+
+```c++
+
+class X {
+  public:
+    X(){
+     a = 5;
+     this->start();
+    }
+    void start(){ /* ... */ }
+   private:
+    int a;
+};
+```
+
+Good:
+
+```c++
+class X {
+ public:
+  X(){
+   a=5;
+  }
+  void start(){ /* ... */ }
+ private:
+  void Init(){
+   this->start();
+  }
+  int a;
+};
+```
+
+###Implicit Conversions
+
+Implicit conversions allow an object of one type to be used where an object of a different type is expected, such as passing an int to a function that expects a double parameter.
+
+Users can define their own conversions in addition to the ones provided by the language through the use of constructors. For example, suppose a class `X` and a function `f`:
+
+```c++
+class X {
+ public:
+  X(int a);
+};
+
+void f(X obj){ /* ... */ }
+```
+
+Now suppose the following code:
+
+```c++
+f(5);
+```
+
+This will _not_ result in an error because C++ provides for the implicit conversion of one type to another so long as a constructor or conversion function of the destination type exists.
+
+However, C++ also provides the `explicit` keyword. This keyword forces the person calling the function to explicitly state the type being passed.
+
+So, if we were to modify our example from earlier:
+
+```c++
+class X {
+ public:
+  explicit X(int a);
+};
+```
+
+Now, calling `f(5);` will result in an error. This is preferable because it makes the code clearer to somebody reading if they don't need to determine that an implicit conversion is happening.
+
+Do not use `explicit` for copy and move constructors (since no conversion takes place) or for constructors that take a single `std::initializer_list` parameter to support copy-initialization (Example: `X x = {1,2};`).
