@@ -269,3 +269,11 @@ namespace X {
 Now `X::Y::foo()` and `X::foo()` are equivalent. Inlining namespaces are primarily used for [ABI](https://en.wikipedia.org/wiki/Application_binary_interface) compatibility.
 
 Try not to nest namespaces too deeply, as this could cause the code to become cluttered and confusing.
+
+We do not use the `using` directive because it completely defeats the purpose of having a namespace in the first place.
+
+###Variables
+
+Always prefer to wrap non-member or non-local variables into a namespace rather than making them global. Always prefer to wrap non-member functions in a namespace rather than making them global or making them static members of a class.
+
+###Variables
