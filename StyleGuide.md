@@ -6,9 +6,8 @@ This document details the coding styles that will be enforced throughout the yea
 
 In order to link to an anchor, make sure you are viewing this in [Github through Web Browser](https://github.com/VikingRobotics580/C-Style-Guide/blob/master/StyleGuide.md), hover over a header, click the link icon next to it, and copy the URL. If you know what an anchor is and plan to use one, you probably didn't need that thorough explanation.
 
-The current programming heads are:
-Joseph Conlon Meek: `meekj@campbellhall.org`
-Tyler Robbins:      `robbint@campbellhall.org`
+The current programming head is:
+Maxwell Chow: `chowm@campbellhall.org`
 
 ##Naming Conventions
 
