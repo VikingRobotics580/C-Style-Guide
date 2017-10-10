@@ -1,17 +1,17 @@
-# 2016 Viking Robotics C++ Style Guide
+# Viking Robotics 580 C++ Style Guide
 
-##Description
+## Description
 
 This document details the coding styles that will be enforced throughout the year on all programming projects that pertain to Robotics. The rules are here to enforce a standard, and are meant to make things consistent so as to not confuse any future programmers. For any suggestions for changes to be made, either discuss it with the current head programmer(s) or, should they not be available, send them an email containing both what change you think should be made and why.
 
 In order to link to an anchor, make sure you are viewing this in [Github through Web Browser](https://github.com/VikingRobotics580/C-Style-Guide/blob/master/StyleGuide.md), hover over a header, click the link icon next to it, and copy the URL. If you know what an anchor is and plan to use one, you probably didn't need that thorough explanation.
 
-The current programming head is:
-Maxwell Chow: `chowm@campbellhall.org`
+The current programming head is
+Ethan Moscot: `moscote@campbellhall.org`
 
-##Naming Conventions
+## Naming Conventions
 
-###General
+### General
 
 
 Make sure names are short, but descriptive.
@@ -31,7 +31,7 @@ ADXRS453Z* ggnore;
 CANTalon* thisIsTheFrontLeftWheelOfTheRobotWhichUsesMecanumDriveAndHowCanWeBeRealIfOurEyesArentReal;
 ```
 
-###File Names
+### File Names
 
 File names should start with a capital letter and be in CamelCase with the first letter capitalized. Source files should use the `.cpp` extension and header files should use `.h`.
 
@@ -45,7 +45,7 @@ PIDrift.cpp // Abbreviation of “Proportional-Integral-Derivative Drift Control
 some_class.hpp // Bad. Not camel cased (snake cased instead), uses .hpp instead of .h
 ```
 
-###Type Names
+### Type Names
 
 Type names should start with a capital letter and be camelCased. A type means either a class, struct, and enums.
 
@@ -56,7 +56,7 @@ class Hardware{ … }
 class AutonomousDrive{ … }
 ```
 
-###Variable Names
+### Variable Names
 
 * Common Names
     * Variable names should start with a lower case letter and be camelCased.
@@ -80,7 +80,7 @@ class AutonomousDrive{ … }
     * Should be named like constants.
     * Example: `enum TORTURE_TYPES`
 
-###Function Names
+### Function Names
 
 * Regular Functions
     * Functions should start with a lower case letter and camel cased after that
@@ -91,19 +91,19 @@ start with the word 'get' or 'set' depending on what it is going to do and the m
     * Examples: `void setSolenoidValue(bool value) { ... }`
     * `bool getSolenoidValue() { ... }`
 
-##Header Files
+## Header Files
 
 ### General
 
 Every source file should have an associated header file. There are exceptions to this, such as in files containing just a main() function.
 
-###Self-contained Headers
+### Self-contained Headers
 
 All header files should be self-contained. This means that header files should not perform any excecution or defining of their own. They should only perform declarations and should be wrapped in include guards.
 
 Exceptions to this include template and inline functions, where the definition must not be seperated from its declaration.
 
-###Include Guards
+### Include Guards
 
 All header files should have an include guard to prevent multiple inclusion. The format should be *\_\<PATH\>\_\<TO\>\_\<FILE\>\_H\_* in all caps.
 
@@ -120,7 +120,7 @@ For example, if you have a file _src/auto/AutonomousDrive.h_, then your include 
 #endif
 ```
 
-###Forward Declarations
+### Forward Declarations
 
 A forward declaration is the declaration of a class, function, or template without an associated definition
 
@@ -155,7 +155,7 @@ How to decide:
 
 Remember, if you can't tell whether you need to use a forward declaration or a `#include`, use a `#include`.
 
-###Inline Functions
+### Inline Functions
 
 An inline function is a way of telling the compiler to expand functions inline rather than calling them through the usual mechanism.
 
@@ -186,7 +186,7 @@ How to decide:
 
 Important Note: Even if you declare a function inline, sometimes the compiler will decide to not inline the function if it decides that a significant performance drop will occur.
 
-###Order of Includes
+### Order of Includes
 
 When including a file, always refer to it from the project's base directory, avoiding Unix shortcuts like `.` and `..` whenever possible.
 
@@ -246,9 +246,9 @@ An exception to this ordering rule is if system-specific code needs conditional 
 #endif
 ```
 
-##Scoping
+## Scoping
 
-###Namespaces
+### Namespaces
 
 Unless you are defining a class, place everything into a namespace. Namespaces should all have a unique name based on the data they encapsulate. Do not _ever_ use the `using` directive. Do not ever declare a namespace as `inline`. 
 
@@ -271,13 +271,13 @@ Try not to nest namespaces too deeply, as this could cause the code to become cl
 
 We do not use the `using` directive because it completely defeats the purpose of having a namespace in the first place.
 
-###Non-member, Static, and Global Functions & Variables
+### Non-member, Static, and Global Functions & Variables
 
 Always prefer to wrap non-member or non-local variables into a namespace rather than making them global. Always prefer to wrap non-member functions in a namespace rather than making them global or making them static members of a class.
 
-##Classes
+## Classes
 
-###Constructors
+### Constructors
 
 Do not do any work in constructors beyond basic initialization. If additional initialization needs to be done (as in, calling a method or function), then that should be placed in a specialized Init method.
 
@@ -314,7 +314,7 @@ class X {
 };
 ```
 
-###Implicit Conversions
+### Implicit Conversions
 
 Implicit conversions allow an object of one type to be used where an object of a different type is expected, such as passing an int to a function that expects a double parameter.
 
