@@ -6,13 +6,13 @@ This document details the coding styles that will be enforced throughout the yea
 
 In order to link to an anchor, make sure you are viewing this in [Github through Web Browser](https://github.com/VikingRobotics580/C-Style-Guide/blob/master/StyleGuide.md), hover over a header, click the link icon next to it, and copy the URL. If you know what an anchor is and plan to use one, you probably didn't need that thorough explanation.
 
-The current programming head is
+The current programming heads are
 Ethan Moscot: `moscote@campbellhall.org`
+Lucas Germain: `germail@campbellhall.org`
 
 ## Naming Conventions
 
 ### General
-
 
 Make sure names are short, but descriptive.
 Do not abbreviate names unless there is a good reason to. Should you need to abbreviate a name, make sure you place a comment above its declaration stating the full, unabridged name. If abbreviations must be made, make sure that the variable can still be understood at a glance.
