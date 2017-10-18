@@ -8,6 +8,7 @@ In order to link to an anchor, make sure you are viewing this in [Github through
 
 The current programming heads are
 Ethan Moscot: `moscote@campbellhall.org`
+
 Lucas Germain: `germail@campbellhall.org`
 
 ## Naming Conventions
