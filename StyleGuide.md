@@ -7,6 +7,7 @@ This document details the coding styles that will be enforced throughout the yea
 In order to link to an anchor, make sure you are viewing this in [Github through Web Browser](https://github.com/VikingRobotics580/C-Style-Guide/blob/master/StyleGuide.md), hover over a header, click the link icon next to it, and copy the URL. If you know what an anchor is and plan to use one, you probably didn't need that thorough explanation.
 
 The current programming heads are
+
 Ethan Moscot: `moscote@campbellhall.org`
 
 Lucas Germain: `germail@campbellhall.org`
